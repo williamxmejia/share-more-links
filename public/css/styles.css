@@ -1,0 +1,53 @@
+@media only screen and (min-width: 801px) {
+  h1 {
+    font-size: 5em;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rows {
+    grid-row: 1;
+}
+
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+
+input {
+  width: 100%;
+  padding: 0.7em;
+  border: none;
+  margin: 0;
+  /* box-sizing: border-box; */
+  background-color: transparent;
+  border-radius: 24px;
+}
+
+.input-box {
+    display: flex;
+    height: 44px;
+    border: 1px solid black;
+    box-shadow: none;
+    border-radius: 24px;
+    margin: 0 auto;
+    width: auto;
+}
+
+button {
+    width: 50%;
+    padding: .7em;
+    margin: .05em;
+    box-sizing: border-box;
+    background-color: #0D51FF;
+    color: white;
+    
+}
