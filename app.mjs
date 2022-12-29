@@ -3,6 +3,7 @@ import mysql2 from "mysql2";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
+import bodyParser from "body-parser";
 
 const app = express();
 
@@ -23,6 +24,9 @@ const connection = mysql2.createConnection({
 
 app.set("view engine", "ejs");
 app.use("/static", express.static(__dirname + "/public"));
+app.use(bodyParser.urlencoded({
+    extended:true
+}))
 
 // connection.query("SELECT * FROM users", (err, results) => {
 //     if(err) throw err;
@@ -30,8 +34,14 @@ app.use("/static", express.static(__dirname + "/public"));
 // })
 
 app.get("/", (req, res) => {
+    // console.log(req.body)
   res.render("pages/index");
 });
+
+app.post("/", (req, res) => {
+    console.log(req.body)
+
+})
 
 app.listen(3000, () => {
   console.log("Connected");
