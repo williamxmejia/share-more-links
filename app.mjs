@@ -52,7 +52,7 @@ app.post("/", (req, res) => {
   res.send(endPoint)
 });
 
-app.get("/:endpoint", (req,res) => {
+app.get("/get/:endpoint", (req,res) => {
     let sql = `SELECT WEBSITE FROM url WHERE shortened_url=${mysql2.escape(req.params.endpoint)}` 
     let website = "";
     // console.log(req.params.endpoint)
