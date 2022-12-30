@@ -1,10 +1,28 @@
 @media only screen and (min-width: 801px) {
+  body {
+    height: 98vh;
+  }
   h1 {
     font-size: 5em;
+  }
+  img {
+    height: 30em;
+    width: 60em;
+    margin-bottom: 20px;
+    border: 1px solid black;
   }
 }
 
 @media only screen and (max-width: 800px) {
+  body {
+    height: 98vh;
+  }
+  img {
+    height: 10em;
+    width: 25em;
+    margin-bottom: 20px;
+    border: 1px solid black;
+  }
 }
 
 .center {
@@ -14,12 +32,13 @@
 }
 
 .rows {
-    grid-row: 1;
+  grid-row: 1;
 }
 
 .center-button {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
 input {
@@ -34,21 +53,22 @@ input {
 }
 
 .input-box {
-    display: flex;
-    height: 44px;
-    border: 1px solid black;
-    box-shadow: none;
-    border-radius: 24px;
-    margin: 0 auto;
-    width: auto;
+  display: flex;
+  height: 44px;
+  border: 1px solid black;
+  box-shadow: none;
+  border-radius: 24px;
+  margin: 0 auto;
+  width: auto;
 }
 
 button {
-    width: 50%;
-    padding: .7em;
-    margin: .05em;
-    box-sizing: border-box;
-    background-color: #0D51FF;
-    color: white;
-    
+  width: 50%;
+  padding: 0.7em;
+  margin: 0.05em;
+  box-sizing: border-box;
+  background-color: #0d51ff;
+  color: white;
+  box-shadow: none;
+  border: 1px solid black;
 }
