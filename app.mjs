@@ -30,10 +30,10 @@ app.use(
   })
 );
 
-connection.query("SELECT website FROM url WHERE shortened_url= 'tulxm'", (err, results) => {
-    if(err) throw err;
-    console.log(results[0].website)
-})
+// connection.query("SELECT website FROM url WHERE shortened_url= 'tulxm'", (err, results) => {
+//     if(err) throw err;
+//     console.log(results[0].website)
+// })
 
 app.get("/", (req, res) => {
   // console.log(req.body)
