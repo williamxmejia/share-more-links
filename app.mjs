@@ -11,10 +11,6 @@ const __dirname = path.resolve();
 
 dotenv.config();
 
-console.log(__dirname);
-// console.log(process.cwd)
-// console.log(__dirname)
-
 const connection = mysql2.createConnection({
   host: process.env.HOST,
   user: process.env.USER,
@@ -30,13 +26,8 @@ app.use(
   })
 );
 
-// connection.query("SELECT website FROM url WHERE shortened_url= 'tulxm'", (err, results) => {
-//     if(err) throw err;
-//     console.log(results[0].website)
-// })
 
 app.get("/", (req, res) => {
-  // console.log(req.body)
   res.render("pages/index")
 });
 
@@ -49,13 +40,12 @@ app.post("/", (req, res) => {
     if (err) throw err
   });
 
-  res.send(endPoint)
+  res.send(`<a href= 'http://localhost:3000/url/${endPoint}'>https://localhost:3000/url/${endPoint}</a>`)
 });
 
-app.get("/get/:endpoint", (req,res) => {
+app.get("/url/:endpoint", (req,res) => {
     let sql = `SELECT WEBSITE FROM url WHERE shortened_url=${mysql2.escape(req.params.endpoint)}` 
     let website = "";
-    // console.log(req.params.endpoint)
 
     connection.query(sql, (err, result) => {
         if(err) throw err
