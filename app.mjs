@@ -26,9 +26,8 @@ app.use(
   })
 );
 
-
 app.get("/", (req, res) => {
-  res.render("pages/index")
+  res.render("pages/index");
 });
 
 app.post("/", (req, res) => {
@@ -37,27 +36,48 @@ app.post("/", (req, res) => {
   let sql = "INSERT INTO url(website, shortened_url) VALUES(?, ?)";
 
   connection.query(sql, [website, endPoint], (err, result) => {
-    if (err) throw err
+    if (err) throw err;
   });
 
-  res.send(`<a href= 'http://localhost:3000/url/${endPoint}'>https://localhost:3000/url/${endPoint}</a>`)
+  // res.send(
+  //   `<a href= 'http://localhost:3000/url/${endPoint}'>https://localhost:3000/url/${endPoint}</a>`
+  // );
+
+  res.redirect("/list");
 });
 
-app.get("/url/:endpoint", (req,res) => {
-    let sql = `SELECT WEBSITE FROM url WHERE shortened_url=${mysql2.escape(req.params.endpoint)}` 
-    let website = "";
+app.get("/url/:endpoint", (req, res) => {
+  let sql = `SELECT WEBSITE FROM url WHERE shortened_url=${mysql2.escape(
+    req.params.endpoint
+  )}`;
+  let website = "";
 
-    connection.query(sql, (err, result) => {
-        if(err) throw err
+  connection.query(sql, (err, result) => {
+    if (err) throw err;
 
-        website =result[0].WEBSITE
-        console.log(website)
+    website = result[0].WEBSITE;
 
-        res.redirect(301, `https://${website}`)
-
-    })
+    // if(website.substring(0,6) == "http://" || website.substring(0, 7) == "https://") {
+    //   // res.redirect(301, `${website}`);
+    //   console.log("Yes");
+    // }
+      
+    res.redirect(301, `https://${website}`);
     
-})
+
+    
+  });
+});
+
+app.get("/list", (req, res) => {
+  const sql = "SELECT * FROM url";
+  connection.query(sql, (err, result) => {
+    if (err) throw err;
+
+    res.render("pages/list", { data: result });
+
+  });
+});
 
 app.listen(3000, () => {
   console.log("Connected");
