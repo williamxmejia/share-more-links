@@ -5,23 +5,35 @@
   </head>
   <body>
     <div>
-      <h1 style="display: flex; justify-content: center;">Shortened URL</h1>
+      <h1 style="display: flex; justify-content: center">Shortened URL</h1>
+      <div class="input-list">
+        <input
+          id="input"
+          name="input"
+          placeholder="Enter URL"
+          type="text"
+          oninput="liveSearch()"
+        />
+      </div>
       <table>
         <tr>
           <th>Site</th>
           <th>Link</th>
         </tr>
-        <% data.forEach(entry => { %>
-        <tr>
-          <td><%= entry.website %></td>
-          <td>
-            <a href="http://localhost:3000/url/<%= entry.shortened_url %>">
-              http://localhost3000/url/<%= entry.shortened_url %>
-            </a>
-          </td>
-        </tr>
-        <% }) %>
+        <div class="">
+          <% data.forEach(entry => { %>
+          <tr class="data">
+            <td><%= entry.website %></td>
+            <td>
+              <a href="http://localhost:3000/url/<%= entry.shortened_url %>">
+                http://localhost3000/url/<%= entry.shortened_url %>
+              </a>
+            </td>
+          </tr>
+          <% }) %>
+        </div>
       </table>
     </div>
+    <%- include('../partials/script') %>
   </body>
 </html>
