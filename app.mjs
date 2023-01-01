@@ -11,11 +11,21 @@ const __dirname = path.resolve();
 
 dotenv.config();
 
-const connection = mysql2.createConnection({
+// const connection = mysql2.createConnection({
+//   host: process.env.HOST,
+//   user: process.env.USER,
+//   password: process.env.PASSWORD,
+//   database: process.env.DATABASE,
+// });
+
+const pool = mysql2.createPool({
   host: process.env.HOST,
-  user: process.env.USER,
+  port: process.env.PORT,
+  user: "user221",
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
+  connectionLimit: 100,
+  multipleStatements:true
 });
 
 app.set("view engine", "ejs");
@@ -35,7 +45,7 @@ app.post("/", (req, res) => {
   let website = req.body.input;
   let sql = "INSERT INTO url(website, shortened_url) VALUES(?, ?)";
 
-  connection.query(sql, [website, endPoint], (err, result) => {
+  pool.query(sql, [website, endPoint], (err, result) => {
     if (err) throw err;
   });
 
@@ -52,7 +62,7 @@ app.get("/url/:endpoint", (req, res) => {
   )}`;
   let website = "";
 
-  connection.query(sql, (err, result) => {
+  pool.query(sql, (err, result) => {
     if (err) throw err;
 
     website = result[0].WEBSITE;
@@ -61,21 +71,17 @@ app.get("/url/:endpoint", (req, res) => {
     //   // res.redirect(301, `${website}`);
     //   console.log("Yes");
     // }
-      
-    res.redirect(301, `https://${website}`);
-    
 
-    
+    res.redirect(301, `https://${website}`);
   });
 });
 
 app.get("/list", (req, res) => {
   const sql = "SELECT * FROM url";
-  connection.query(sql, (err, result) => {
+  pool.query(sql, (err, result) => {
     if (err) throw err;
 
     res.render("pages/list", { data: result });
-
   });
 });
 
