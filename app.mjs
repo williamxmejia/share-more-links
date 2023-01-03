@@ -12,7 +12,7 @@ const __dirname = path.resolve();
 dotenv.config();
 
 const PORT = 5000;
-const HOST = "https://sml.onrender.com";
+const HOST = "sml.onrender.com";
 
 // const connection = mysql2.createConnection({
 //   host: process.env.HOST,
