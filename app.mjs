@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
 import bodyParser from "body-parser";
+import {check, validationResult } from "express-validator";
 
 const app = express();
 
@@ -14,12 +15,6 @@ dotenv.config();
 const PORT = process.env.LOCALPORT;
 const HOST = process.env.IP;
 
-// const connection = mysql2.createConnection({
-//   host: process.env.HOST,
-//   user: process.env.USER,
-//   password: process.env.PASSWORD,
-//   database: process.env.DATABASE,
-// });
 
 const pool = mysql2.createPool({
   host: process.env.HOST,
