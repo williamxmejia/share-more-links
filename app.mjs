@@ -12,7 +12,7 @@ const __dirname = path.resolve();
 dotenv.config();
 
 const PORT = 5000;
-const HOST = "192.168.1.245";
+const HOST = "35.160.120.126";
 
 // const connection = mysql2.createConnection({
 //   host: process.env.HOST,
