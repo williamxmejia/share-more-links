@@ -49,8 +49,8 @@ app.post("/", (req, res) => {
 
    res.send(
 	`<div><h3><a href="/">Create Another</a><h3>
-	<h3><a href="/list">All Links</a></h3></div>
-	<a href= '/url/${endPoint}'>https://sml.onrender.com//url/${endPoint}</a>`
+	<h3><a href="http://35.160.120.126/list">All Links</a></h3></div>
+	<a href= 'http://35.160.120.126/url/${endPoint}'>https://sml.onrender.com//url/${endPoint}</a>`
    );
 
 });
@@ -80,6 +80,6 @@ app.get("/list", (req, res) => {
   });
 });
 
-https.createServer(app).listen(PORT, HOST, () => {
+app.listen(PORT, HOST, () => {
   console.log(`${HOST}:${PORT} connected`);
 });
