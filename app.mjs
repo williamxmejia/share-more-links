@@ -50,7 +50,7 @@ app.post("/", (req, res) => {
    res.send(
 	`<div><h3><a href="/">Create Another</a><h3>
 	<h3><a href="/list">All Links</a></h3></div>
-	<a href= '/url/${endPoint}'>http://192.168.1.245/url/${endPoint}</a>`
+	<a href= '/url/${endPoint}'>https://sml.onrender.com//url/${endPoint}</a>`
    );
 
 });
