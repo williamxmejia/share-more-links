@@ -12,7 +12,7 @@ const __dirname = path.resolve();
 dotenv.config();
 
 const PORT = 5000;
-const HOST = "sml.onrender.com";
+const HOST = "192.168.1.245";
 
 // const connection = mysql2.createConnection({
 //   host: process.env.HOST,
@@ -88,6 +88,6 @@ app.get("/list", (req, res) => {
   });
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`[${HOST}:${PORT}] Server is runnning`);
+app.listen(5000, () => {
+  console.log("Connected");
 });
