@@ -80,6 +80,6 @@ app.get("/list", (req, res) => {
   });
 });
 
-app.listen(PORT,'sml.onrender.com', () => {
+app.listen(PORT, () => {
   console.log(`${PORT} connected`);
 });
