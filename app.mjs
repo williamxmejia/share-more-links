@@ -11,8 +11,8 @@ const __dirname = path.resolve();
 
 dotenv.config();
 
-const PORT = 5000;
-const HOST = "192.168.1.245";
+const PORT = process.env.LOCALPORT;
+const HOST = process.env.IP;
 
 // const connection = mysql2.createConnection({
 //   host: process.env.HOST,
@@ -52,11 +52,12 @@ app.post("/", (req, res) => {
     if (err) throw err;
   });
 
-  // res.send(
-  //   `<a href= 'http://localhost:3000/url/${endPoint}'>https://localhost:3000/url/${endPoint}</a>`
-  // );
+   res.send(
+	`<div><h3><a href="/">Create Another</a><h3>
+	<h3><a href="/list">All Links</a></h3></div>
+	<a href= '/url/${endPoint}'>http://192.168.1.245/url/${endPoint}</a>`
+   );
 
-  res.redirect("/list");
 });
 
 app.get("/url/:endpoint", (req, res) => {
@@ -70,10 +71,6 @@ app.get("/url/:endpoint", (req, res) => {
 
     website = result[0].WEBSITE;
 
-    // if(website.substring(0,6) == "http://" || website.substring(0, 7) == "https://") {
-    //   // res.redirect(301, `${website}`);
-    //   console.log("Yes");
-    // }
 
     res.redirect(301, `https://${website}`);
   });
@@ -88,6 +85,6 @@ app.get("/list", (req, res) => {
   });
 });
 
-app.listen(5000, () => {
-  console.log("Connected");
+app.listen(PORT, HOST, () => {
+  console.log(`${HOST}:${PORT} connected`);
 });
