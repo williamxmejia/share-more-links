@@ -12,7 +12,7 @@ const __dirname = path.resolve();
 
 dotenv.config();
 
-const PORT = process.env.LOCALPORT || 3000;
+const PORT = process.env.LOCALPORT || 5000;
 const HOST = process.env.IP;
 
 
@@ -80,6 +80,6 @@ app.get("/list", (req, res) => {
   });
 });
 
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`${HOST}:${PORT} connected`);
+app.listen(PORT, () => {
+  console.log(`${PORT} connected`);
 });
