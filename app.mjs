@@ -85,6 +85,6 @@ app.get("/list", (req, res) => {
   });
 });
 
-app.listen(80, HOST, () => {
+app.listen(PORT, HOST, () => {
   console.log(`${HOST}:${PORT} connected`);
 });
