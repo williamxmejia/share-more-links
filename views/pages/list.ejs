@@ -18,9 +18,9 @@
       </div>
       <div class="">
         <% data.forEach(entry => { %>
-        <div class="list">
+        <div>
           <ul>
-            <li class="list">
+            <li class="list data">
               <%= entry.id %>. <%= entry.website %> ||
               <a href="/url/<%= entry.shortened_url %>">
                 https://localhost:5000/url/<%= entry.shortened_url %>
