@@ -4,8 +4,8 @@
     <%- include('../partials/head') %>
   </head>
   <body>
-    <div>
-      <h1 style="display: flex; justify-content: center">Shortened URL</h1>
+    <div class="bb1">
+      <h1 style="display: flex; justify-content: center">URL</h1>
       <h2><a href="/">Home</a></h2>
       <div class="input-list">
         <input
@@ -16,24 +16,20 @@
           oninput="liveSearch()"
         />
       </div>
-      <table>
-        <tr>
-          <th>Site</th>
-          <th>Link</th>
-        </tr>
-        <div class="">
-          <% data.forEach(entry => { %>
-          <tr class="data">
-            <td><%= entry.website %></td>
-            <td>
+      <div class="">
+        <% data.forEach(entry => { %>
+        <div class="list">
+          <ul>
+            <li class="list">
+              <%= entry.id %>. <%= entry.website %> ||
               <a href="/url/<%= entry.shortened_url %>">
-                https://sml.onrender.com//url/<%= entry.shortened_url %>
+                https://localhost:5000/url/<%= entry.shortened_url %>
               </a>
-            </td>
-          </tr>
-          <% }) %>
+            </li>
+          </ul>
         </div>
-      </table>
+        <% }) %>
+      </div>
     </div>
     <%- include('../partials/script') %>
   </body>

@@ -14,13 +14,6 @@ dotenv.config();
 const PORT = process.env.LOCALPORT;
 const HOST = process.env.IP;
 
-// const connection = mysql2.createConnection({
-//   host: process.env.HOST,
-//   user: process.env.USER,
-//   password: process.env.PASSWORD,
-//   database: process.env.DATABASE,
-// });
-
 const pool = mysql2.createPool({
   host: process.env.HOST,
   port: process.env.PORT,
@@ -55,7 +48,7 @@ app.post("/", (req, res) => {
    res.send(
 	`<div><h3><a href="/">Create Another</a><h3>
 	<h3><a href="/list">All Links</a></h3></div>
-	<a href= '/url/${endPoint}'>https://sml.onrender.com//url/${endPoint}</a>`
+	<a href= '/url/${endPoint}'>https://localhost:5000/url/${endPoint}</a>`
    );
 
 });
