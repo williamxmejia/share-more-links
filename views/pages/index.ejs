@@ -6,11 +6,28 @@
   <body class="center">
     <div class="bb1">
       <h2><a href="/list">All Links</a></h2>
-      <img src="/static/images/quicklinks.png" alt="website logo">
+      <img src="/static/images/quicklinks.png" alt="website logo" />
       <form action="/" method="post">
+        <div class="err-back">
+          <% if(typeof message != "undefined" && message) { %>
+
+          <div class="err-msg">
+            <div class="" role="alert">
+              <strong><%= message %></strong>
+            </div>
+          </div>
+
+          <% } %>
+        </div>
         <div class="input-box">
           <p class="input-space">HTTPS://</p>
-          <input id="input" name="input" placeholder="Shorten URL" type="text" required/>
+          <input
+            id="input"
+            name="input"
+            placeholder="Shorten URL"
+            type="text"
+            required
+          />
         </div>
         <div class="center-button">
           <button type="submit">Make Short</button>

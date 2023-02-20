@@ -21,7 +21,7 @@ const pool = mysql2.createPool({
   password: process.env.PASSWORD,
   database: process.env.DATABASE,
   connectionLimit: 100,
-  multipleStatements:true
+  multipleStatements: true,
 });
 
 app.set("view engine", "ejs");
@@ -41,16 +41,21 @@ app.post("/", (req, res) => {
   let website = req.body.input;
   let sql = "INSERT INTO url(website, shortened_url) VALUES(?, ?)";
 
-  pool.query(sql, [website, endPoint], (err, result) => {
-    if (err) throw err;
-  });
+  if (/^\s*$/.test(website)) {
+    return res.render("pages/index", {
+      message: "Enter a valid url"
+    })
+  } else {
+    pool.query(sql, [website, endPoint], (err, result) => {
+      if (err) throw err;
+    });
 
-   res.send(
-	`<div><h3><a href="/">Create Another</a><h3>
-	<h3><a href="/list">All Links</a></h3></div>
-	<a href= '/url/${endPoint}'>https://localhost:5000/url/${endPoint}</a>`
-   );
-
+    res.send(
+      `<div><h3><a href="/">Create Another</a><h3>
+    <h3><a href="/list">All Links</a></h3></div>
+    <a href= '/url/${endPoint}'>https://localhost:5000/url/${endPoint}</a>`
+    );
+  }
 });
 
 app.get("/url/:endpoint", (req, res) => {
@@ -63,7 +68,6 @@ app.get("/url/:endpoint", (req, res) => {
     if (err) throw err;
 
     website = result[0].WEBSITE;
-
 
     res.redirect(301, `https://${website}`);
   });

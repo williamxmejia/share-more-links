@@ -144,3 +144,16 @@ table {
 .is-hidden {
   display: none;
 }
+
+
+.err-msg {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  color: red;
+
+}
+
+/* .err-back {
+  background-color: red; */
+/* } */
