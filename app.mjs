@@ -41,7 +41,7 @@ app.post("/", (req, res) => {
   let website = req.body.input;
   let sql = "INSERT INTO url(website, shortened_url) VALUES(?, ?)";
 
-  if (/^\s*$/.test(website) || /\s/.test(website)) {
+  if (/^\s*$/.test(website) || /\s/.test(website) || !website.includes(".")) {
     return res.render("pages/index", {
       message: "Enter a valid url"
     })
